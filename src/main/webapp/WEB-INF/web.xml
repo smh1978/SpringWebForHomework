@@ -1,0 +1,33 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+	  <!--Spring配置： needed for ContextLoaderListener -->
+	  <context-param>
+	    <param-name>contextConfigLocation</param-name>
+	    <param-value>classpath:spring/spring-*.xml</param-value>
+	  </context-param>
+	  
+	  
+	  <!-- Bootstraps the root web application context before servlet initialization -->
+	  <listener>
+	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	  </listener>
+	
+    <servlet>
+        <servlet-name>springweb</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 更改springweb的默认配置文件位置,否则必须在WEB-INF下并以'servlet-name'-servlet.xml命名 -->
+         <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:/spring/springweb-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springweb</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>

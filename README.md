@@ -1,2 +1,1 @@
-# SpringWebForHomework
-for homework
+# SpringWeb
